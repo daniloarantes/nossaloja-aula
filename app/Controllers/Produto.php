@@ -51,11 +51,15 @@ class Produto extends BaseController
             $dados['imagem'] = $nomeRand;
 
             if ($this->produtoModel->save($dados)) {
+                session()->setFlashdata('cadastroOk', "Cadastro realizado com sucesso!");
                 return redirect()->route('administracao');
             }
         }
+    }
 
-
+    public function listarProdutos() {
+        $produtos = $this->produtoModel->findAll();
+        return $produtos;
     }
 
     public function alterarProduto() {

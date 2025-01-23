@@ -13,9 +13,10 @@ class ProdutoModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'produto_nome',
+        'produto',
         'descricao',
         'preco',
+        'imagem',
     ];
 
     protected bool $allowEmptyInserts = false;

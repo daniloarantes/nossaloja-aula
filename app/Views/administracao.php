@@ -2,6 +2,11 @@
             <div class="col-12 d-flex justify-content-center mt-5 mb-5">
                 <div>
                     <h1>Administração - NossaLoja.com</h1>
+                    <?php if (session()->has('cadastroOk')) : ?>
+                        <?php echo session()->get('cadastroOk'); ?>
+                    <?php endif; ?>
+                    <?php echo form_close(); ?>
+
                     <div class="d-flex justify-content-evenly mt-5">
 
                         <a href="<?= base_url('cadastrar'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Cadastrar Produto">
@@ -51,18 +56,18 @@
                     </tr>
                     </thead>
                     <tbody>
-
+                    <?php foreach ($produtos as $produto) : ?>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Notebook Dell</td>
-                        <td>Notebook Dell - I7, 16GB , 1TB</td>
-                        <td>R$ 3599,00</td>
+                        <th scope="row"><?= $produto['id'] ?></th>
+                        <td><?= $produto['produto'] ?></td>
+                        <td><?= $produto['descricao'] ?></td>
+                        <td>R$ <?= $produto['preco'] ?></td>
                         <td>
-                            <a href="<?= base_url('         alterar'); ?>" class="btn btn-warning me-3">Alterar</a>
-                            <a href="" class="btn btn-danger">Remover</a>
+                            <a href="<?= site_url('produto/editarProduto/' . $produto['id']) ?>" class="btn btn-warning me-3">Alterar</a>
+                            <a href="<?= site_url('produto/excluirProduto/' . $produto['id']) ?>" class="btn btn-danger">Remover</a>
                         </td>
                     </tr>
-
+                    <?php endforeach; ?>
 
                     </tbody>
                 </table>
