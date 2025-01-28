@@ -28,10 +28,10 @@
                 <hr>
                 <h1 class="mt-5 mb-5 text-center">Produtos Cadastrados</h1>
                 <div class="d-flex justify-content-center mb-5">
-                    <form class="row g-3">
+                    <?= form_open('produto/pesquisarProduto', 'method="get" class="row g-3"'); ?>
                         <div class="col-auto">
                             <label for="inputPesquisa" class="visually-hidden">Pesquisa</label>
-                            <input type="text" class="form-control" id="inputPesquisa" placeholder="Buscar">
+                            <input type="text" class="form-control" id="inputPesquisa" name="pesquisa" placeholder="Buscar">
                         </div>
                         <div class="col-auto">
                             <select class="form-select" aria-label="Default select example">
@@ -42,7 +42,7 @@
                         <div class="col-auto">
                             <button type="submit" class="btn btn-primary mb-3">Pesquisar</button>
                         </div>
-                    </form>
+                    <?= form_close(); ?>
                 </div>
 
                 <table class="table">

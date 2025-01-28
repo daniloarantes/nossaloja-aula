@@ -15,24 +15,27 @@
         </div>
        <div class="row">
             <div class="col-12 d-flex justify-content-center mt-5 mb-5">
-                <form class="w-50 border m-5 p-5 mw-10">
+
+                <?php echo form_open_multipart('produto/alterarProduto')?>
                     <div class="mb-3">
+                        <input type="hidden" name="id" value="<?php echo $produto['id'] ?>"
                       <label for="inputProduto" class="form-label">Produto</label>
-                      <input type="text" class="form-control" name="produto" id="inputProduto">
+                      <input type="text" class="form-control" name="produto" id="inputProduto"  value="<?php echo $produto['produto'] ?>">
                     </div>
                     <div class="mb-3">
                         <label for="inputDesc" class="form-label">Descrição</label>
-                        <input type="text" class="form-control" name="descricao" id="inputDesc">
+                        <input type="text" class="form-control" name="descricao" id="inputDesc" value="<?php echo $produto['descricao'] ?>">
                     </div>
                     <div class="mb-3">
                       <label for="inputPreco" class="form-label">Preço</label>
-                      <input type="text" class="form-control" name="preco" id="inputPreco">
+                      <input type="text" class="form-control" name="preco" id="inputPreco" value="<?php echo $produto['preco'] ?>">
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Imagem do Produto</label>
-                        <input class="form-control" type="file" name="imagem" id="formFile">
+                        <input class="form-control" type="file" name="userfile" id="formFile" value="<?php echo $produto['imagem'] ?>">
                     </div>
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
-                  </form>
+                  <?php echo form_close(); ?>
+
             </div>
        </div>
