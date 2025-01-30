@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `nossaloja-aula`
 --
-CREATE DATABASE IF NOT EXISTS `nossaloja-aula` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE DATABASE IF NOT EXISTS `nossaloja-aula` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `nossaloja-aula`;
 
 -- --------------------------------------------------------
@@ -179,7 +179,7 @@ CREATE TABLE `produtos` (
   `descricao` varchar(100) NOT NULL,
   `preco` decimal(10,0) NOT NULL,
   `imagem` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `produtos`
