@@ -34,7 +34,7 @@
                             <input type="text" class="form-control" id="inputPesquisa" name="pesquisa" placeholder="Buscar">
                         </div>
                         <div class="col-auto">
-                            <select class="form-select" aria-label="Default select example">
+                            <select class="form-select" aria-label="Default select example" name="tipo">
                                 <option value="1">ID</option>
                                 <option value="2">Nome</option>
                             </select>

@@ -122,10 +122,18 @@ class Produto extends BaseController
 
     public function pesquisarProduto() {
         $pesquisa = $this->request->getGet('pesquisa');
+        $tipo = $this->request->getGet('tipo');
+
+        if ($tipo == 1) {
+            $produtos = $this->produtoModel->like('id',$pesquisa)->find();
+        } else {
+            $produtos = $this->produtoModel->like('produto',$pesquisa)->find();
+        }
+
 
         return view('templates/header') .
             view('templates/navbar') .
-            view('administracao', ['produtos' => $this->produtoModel->like('produto',$pesquisa)->find()]) .
+            view('administracao', ['produtos' => $produtos]) .
             view('templates/footer');
     }
 }
