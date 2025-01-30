@@ -16,14 +16,15 @@
                     <a class="nav-link text-light fs-4">Promoções</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light fs-4" href="<?= base_url('pesquisa'); ?>">Pesquisar</a>
+                    <a class="nav-link text-light fs-4" href="<?= base_url('produto/buscarProduto'); ?>">Pesquisar</a>
                 </li>
 
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Pesquisa" aria-label="Search">
+
+                <?= form_open('produto/buscarProduto', 'method="get" class="d-flex"'); ?>
+                <input class="form-control me-2" type="search" placeholder="Pesquisa" aria-label="Search" name="pesquisa">
                 <button class="btn btn-outline-success" type="submit">Pesquisar</button>
-            </form>
+            <?= form_close(); ?>
             <?php if (auth()->loggedIn()) : ?>
                 Olá, <?php echo auth()->user()->username; ?>
                 <a href="<?= site_url('logout') ?>">Sair</a>
