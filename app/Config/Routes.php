@@ -16,8 +16,8 @@ $routes->get('produto/excluirProduto/(:num)', 'Produto::excluirProduto/$1');
 $routes->get('produto/editarProduto/(:num)', 'Produto::editarProduto/$1');
 $routes->post('produto/alterarProduto', 'Produto::alterarProduto');
 $routes->get('produto/pesquisarProduto', 'Produto::pesquisarProduto');
+$routes->get('produto/buscarProduto', 'Produto::buscarProduto');
 
-$routes->get('pesquisa', 'Produto::pesquisarProduto');
 $routes->get('cadastrar', 'Produto::cadastrarProduto');
 
 service('auth')->routes($routes);
