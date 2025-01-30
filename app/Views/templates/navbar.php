@@ -24,7 +24,12 @@
                 <input class="form-control me-2" type="search" placeholder="Pesquisa" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Pesquisar</button>
             </form>
-            <a href="<?= base_url('login'); ?>" class="btn btn-primary m-3">Entrar</a>
+            <?php if (auth()->loggedIn()) : ?>
+                Olá, <?php echo auth()->user()->username; ?>
+                <a href="<?= site_url('logout') ?>">Sair</a>
+            <?php else : ?>
+                <a href="<?= site_url('login') ?>" class="btn btn-primary m-3">Entrar</a>
+            <?php endif; ?>
         </div>
     </div>
 </nav>
