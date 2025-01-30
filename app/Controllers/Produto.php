@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\ProdutoModel;
 use CodeIgniter\HTTP\ResponseInterface;
+use function PHPUnit\Framework\isNull;
 
 class Produto extends BaseController
 {
@@ -134,6 +135,23 @@ class Produto extends BaseController
         return view('templates/header') .
             view('templates/navbar') .
             view('administracao', ['produtos' => $produtos]) .
+            view('templates/footer');
+    }
+
+    public function buscarProduto() {
+        $pesquisa = $this->request->getGet('pesquisa');
+
+
+        if ($pesquisa == NULL) {
+            $produtos = $this->produtoModel->findAll();
+        } else {
+            $produtos = $this->produtoModel->like('produto',$pesquisa)->find();
+        }
+
+
+        return view('templates/header') .
+            view('templates/navbar') .
+            view('pesquisa', ['produtos' => $produtos]) .
             view('templates/footer');
     }
 }
