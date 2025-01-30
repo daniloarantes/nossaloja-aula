@@ -7,7 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Main::index');
 //$routes->get('login', 'Usuario::login');
-$routes->get('administracao', 'Admin::index');
+$routes->get('administracao', 'Admin::index', ['filter' => 'session']);
 $routes->get('admins', 'Usuario::admins');
 $routes->get('cadlogin', 'Usuario::cadlogin');
 
@@ -20,3 +20,4 @@ $routes->get('produto/pesquisarProduto', 'Produto::pesquisarProduto');
 $routes->get('pesquisa', 'Produto::pesquisarProduto');
 $routes->get('cadastrar', 'Produto::cadastrarProduto');
 
+service('auth')->routes($routes);
