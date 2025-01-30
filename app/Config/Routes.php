@@ -6,7 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Main::index');
-$routes->get('login', 'Usuario::login');
+//$routes->get('login', 'Usuario::login');
 $routes->get('administracao', 'Admin::index');
 $routes->get('admins', 'Usuario::admins');
 $routes->get('cadlogin', 'Usuario::cadlogin');
