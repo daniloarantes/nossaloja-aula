@@ -35,11 +35,7 @@
                     <p>Nenhum Produto encontrado</p>
                 <?php endif; ?>
 
-                <?php
-                $users = auth()->getProvider();
-                $user = $users->findAll();
-                var_dump($user[0]);
-                ?>
+
                 
 
                 

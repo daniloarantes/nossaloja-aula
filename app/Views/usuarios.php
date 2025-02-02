@@ -18,30 +18,39 @@
                             </svg>
                         </a>
                     </div>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Login</th>
-                        <th scope="col">Funções</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Usuário</th>
+                            <th scope="col">Grupo</th>
 
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Danilo Arantes</td>
-                        <td>daniloarantes</td>
-                        <td>
-                            <a href="" class="btn btn-warning me-3">Alterar</a>
-                            <a href="" class="btn btn-danger">Remover</a>
-                        </td>
-                    </tr>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($usuarios as $usuario) : ?>
+                            <tr>
+                                <th scope="row"><?= $usuario->id ?></th>
+                                <td><?= $usuario->username ?></td>
+                                <td><?= implode(',', $usuario->getGroups()) ?></td>
 
+                                <td>
+                                    <?php if(str_contains(implode(',', $usuario->getGroups()), "admin")): ?>
+                                        <a href="<?= site_url('usuarios/removeAdmin/' . $usuario->id) ?>" class="btn btn-warning me-3">Remove Admin</a>
+                                    <?php else: ?>
+                                        <a href="<?= site_url('usuarios/definirAdmin/' . $usuario->id) ?>" class="btn btn-info me-3">Define Admin</a>
+                                    <?php endif; ?>
 
-                    </tbody>
-                </table>
+                                    <a href="<?= site_url('usuarios/excluirUsuario/' . $usuario->id) ?>" class="btn btn-danger">Remover</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
        </div>
+
+
+

@@ -7,6 +7,36 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class Usuario extends BaseController
 {
+
+    public function listarTodos(){
+        $users = auth()->getProvider();
+
+        return $users->findAll();
+    }
+
+    public function definirAdmin($id){
+       $users = auth()->getProvider();
+       $user = $users->find($id);
+       $user->addGroup('admin');
+
+        return redirect()->route('usuarios');
+
+    }
+
+    public function removeAdmin($id){
+        $users = auth()->getProvider();
+        $user = $users->find($id);
+        $user->removeGroup('admin');
+
+        return redirect()->route('usuarios');
+    }
+
+    public function excluirUsuario($id){
+        $users = auth()->getProvider();
+
+        $users->delete($id, true);
+        return redirect()->route('usuarios');
+    }
     public function cadlogin()
     {
         return view('templates/header') .
@@ -31,11 +61,11 @@ class Usuario extends BaseController
             view('templates/footer');
     }
 
-    public function admins()
+    public function usuarios()
     {
         return view('templates/header') .
             view('templates/navbar') .
-            view('admins') .
+            view('usuarios', ['usuarios' => $this->listarTodos()]) .
             view('templates/footer');
     }
 }

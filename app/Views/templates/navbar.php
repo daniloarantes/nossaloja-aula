@@ -22,15 +22,22 @@
             </ul>
 
                 <?= form_open('produto/buscarProduto', 'method="get" class="d-flex"'); ?>
-                <input class="form-control me-2" type="search" placeholder="Pesquisa" aria-label="Search" name="pesquisa">
-                <button class="btn btn-outline-success" type="submit">Pesquisar</button>
-            <?= form_close(); ?>
+                    <input class="form-control me-2" type="search" placeholder="Pesquisa" aria-label="Search" name="pesquisa">
+                    <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+                 <?= form_close(); ?>
+
+
             <?php if (auth()->loggedIn()) : ?>
-                Olá, <?php echo auth()->user()->username; ?>
-                <a href="<?= site_url('logout') ?>">Sair</a>
+                <?php if(str_contains(implode(',', auth()->user()->getGroups()), "admin")): ?>
+                    <span style="color:#FFFFFF; margin: 5px">Olá, <a style="text-decoration: none; color:#FFF;" href="<?= site_url('administracao'); ?>"><?php echo auth()->user()->username; ?></a></span>
+                <?php else : ?>
+                    <span style="color:#FFFFFF; margin: 5px">Olá, <?php echo auth()->user()->username; ?></span>
+                <?php endif; ?>
+                <a href="<?= site_url('logout') ?>" style="margin: 5px">Sair</a>
             <?php else : ?>
                 <a href="<?= site_url('login') ?>" class="btn btn-primary m-3">Entrar</a>
             <?php endif; ?>
+
         </div>
     </div>
 </nav>
