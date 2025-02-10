@@ -19,8 +19,7 @@ class Usuario extends BaseController
        $user = $users->find($id);
        $user->addGroup('admin');
 
-        return redirect()->route('usuarios');
-
+       return redirect()->route('usuarios');
     }
 
     public function removeAdmin($id){
@@ -37,6 +36,7 @@ class Usuario extends BaseController
         $users->delete($id, true);
         return redirect()->route('usuarios');
     }
+
     public function cadlogin()
     {
         return view('templates/header') .
@@ -68,4 +68,6 @@ class Usuario extends BaseController
             view('usuarios', ['usuarios' => $this->listarTodos()]) .
             view('templates/footer');
     }
+
+
 }

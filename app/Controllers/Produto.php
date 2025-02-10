@@ -141,7 +141,6 @@ class Produto extends BaseController
     public function buscarProduto() {
         $pesquisa = $this->request->getGet('pesquisa');
 
-
         if ($pesquisa == NULL) {
             $produtos = $this->produtoModel->findAll();
         } else {
@@ -153,5 +152,30 @@ class Produto extends BaseController
             view('templates/navbar') .
             view('pesquisa', ['produtos' => $produtos]) .
             view('templates/footer');
+    }
+
+    public function produtoDetalhe($id){
+      //  $produto = $this->produtoModel->find($id);
+        //$dados;
+
+        if(session()->get('carrinho')){
+            $carrinho = session()->get('carrinho');
+            //se produto já está no carrinho
+
+            if(key_exists($id, $carrinho['item'])){
+              echo 'produto já no carrinho';
+              $dados = $carrinho['item'][$id];
+             // return redirect()->route('produto/produtoDetalhe/'.$id);
+            } else {
+                $dados = $this->produtoModel->find($id);
+            }
+            return view('templates/header') .
+                view('templates/navbar') .
+                view('produto-detalhe', ['produtos' => $dados]) .
+                view('templates/footer');
+        }
+
+
+
     }
 }

@@ -27,4 +27,10 @@ $routes->get('usuarios/definirAdmin/(:num)', 'Usuario::definirAdmin/$1', ['filte
 $routes->get('usuarios/removeAdmin/(:num)', 'Usuario::removeAdmin/$1', ['filter' => 'group:admin']);
 $routes->get('usuarios/excluirUsuario/(:num)', 'Usuario::excluirUsuario/$1', ['filter' => 'group:admin']);
 
+
+$routes->get('produto/produtoDetalhe/(:num)', 'Produto::produtoDetalhe/$1');
+$routes->get('carrinho', 'Carrinho::index');
+$routes->get('carrinho/adicionaProduto/(:num)/(:num)', 'Carrinho::adicionaProduto/$1/$2');
+$routes->get('carrinho/removeProduto/(:num)', 'Carrinho::removeProduto/$1');
+
 service('auth')->routes($routes);

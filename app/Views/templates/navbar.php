@@ -1,4 +1,11 @@
 <!--Inicio Navbar-->
+
+<?php
+if(session()->get('carrinho')){
+    $carrinho = session()->get('carrinho');
+}
+?>
+
 <nav class="navbar navbar-dark navbar-expand-lg bg-black">
     <div class="container-fluid">
         <a class="navbar-brand" href="<?= base_url('/'); ?>">
@@ -17,6 +24,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-light fs-4" href="<?= base_url('produto/buscarProduto'); ?>">Pesquisar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light fs-4" href="<?= base_url('carrinho'); ?>">Carrinho(<?= count($carrinho['item']) ?>)</a>
                 </li>
 
             </ul>
